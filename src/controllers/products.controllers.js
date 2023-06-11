@@ -26,6 +26,7 @@ const updateDescriptionProduct = async (req, res, next) => {
 };
 
 const getProductsZero = async (req, res, next) => {
+  console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
   try {
     const products = await Products.findAll({
       where:{ availableQty: { [Op.gt]: 0 } },
