@@ -1,0 +1,92 @@
+<style type="text/css">
+  body,
+  html, 
+  .body {
+    background: #f3f3f3 !important;
+  }
+</style>
+<!-- move the above styles into your custom stylesheet -->
+
+<spacer size="16"></spacer>
+
+<container>
+
+  <spacer size="16"></spacer>
+
+  <row>
+    <columns>
+      <h1>Thanks <%= username %> for your order.</h1>
+      <p>Thanks for shopping with us! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad earum ducimus, non, eveniet neque dolores voluptas architecto sed, voluptatibus aut dolorem odio. Cupiditate a recusandae, illum cum voluptatum modi nostrum.</p>
+
+      <spacer size="16"></spacer>
+
+      <callout class="secondary">
+        <row>
+          <columns large="6">
+            <p>
+              <strong>Email Address</strong><br/>
+              <%= email %>
+            </p>
+            <p>
+              <strong>Order ID</strong><br/>
+              <%= orderId %>
+            </p>
+          </columns>
+          <columns large="6">
+            <p>
+              <strong>Shipping Method</strong><br/>
+              Boat (1&ndash;2 weeks)<br/>
+              <strong>Shipping Address</strong><br/>
+              Captain Price<br/>
+              123 Maple Rd<br/>
+              Campbell, CA 95112
+            </p>
+          </columns>
+        </row>
+      </callout>
+
+      <h4>Order Details</h4>
+
+      <table>
+        <tr><th>Item</th><th>#</th><th>Price</th></tr>
+        <tr><td><%= product0 %></td><td><%= quantity0 %></td><td>$<%= price0 %></td></tr>
+        <tr><td><%= product1 %></td><td><%= quantity1 %></td><td>$<%= price1 %></td></tr>
+        <tr><td><%= product2 %></td><td><%= quantity2 %></td><td>$<%= price2 %></td></tr>
+        <tr><td><%= product3 %></td><td><%= quantity3 %></td><td>$<%= price3 %></td></tr>
+        <tr><td><%= product4 %></td><td><%= quantity4 %></td><td>$<%= price4 %></td></tr>
+        <tr><td><%= product5 %></td><td><%= quantity5 %></td><td>$<%= price5 %></td></tr>
+        <tr><td><%= product6 %></td><td><%= quantity6 %></td><td>$<%= price6 %></td></tr>
+        <tr><td><%= product7 %></td><td><%= quantity7 %></td><td>$<%= price7 %></td></tr>
+        <tr><td><%= product8 %></td><td><%= quantity8 %></td><td>$<%= price8 %></td></tr>
+        <tr><td><%= product9 %></td><td><%= quantity9 %></td><td>$<%= price9 %></td></tr>
+        <tr>
+          <td colspan="2"><b>Subtotal:</b></td>
+          <td>$<%= totalOrderPrice %></td>
+        </tr>
+      </table>
+
+      <hr/>
+
+      <h4>What's Next?</h4>
+
+      <p>Our carrier raven will prepare your order for delivery. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi necessitatibus itaque debitis laudantium doloribus quasi nostrum distinctio suscipit, magni soluta eius animi voluptatem qui velit eligendi quam praesentium provident culpa?</p>
+    </columns>
+  </row>
+  <row class="footer text-center">
+    <columns large="3">
+      <img src="http://placehold.it/170x30" alt="">
+    </columns>
+    <columns large="3">
+      <p>
+        Call us at 800.555.1923<br/>
+        Email us at support@discount.boat
+      </p>
+    </columns>
+    <columns large="3">
+      <p>
+        123 Maple Rd<br/>
+        Campbell, CA 95112
+      </p>
+    </columns>
+  </row>
+</container>
