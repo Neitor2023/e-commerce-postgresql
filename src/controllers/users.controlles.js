@@ -125,8 +125,8 @@ const validateEmail = async (req, res, next) => {
 const updateUser = async (req, res) => {
   try {
       const { id } = req.params;    
-      const { username, avatar, validUser } = req.body;
-      await Users.update({username, avatar, validUser},{
+      const { username, avatar } = req.body;
+      await Users.update({username, avatar},{
           where:{ id }
       });
       res.status(204).send()
