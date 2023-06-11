@@ -135,11 +135,25 @@ const updateUser = async (req, res) => {
   }
 };
 
+const getUserAll = async (req, res) => {
+  try {
+    const users = await Users.findAll({
+      attributes: {
+        exclude: ['password'],
+      }
+    });
+    res.json(users);
+  } catch (error) {
+    res.status(400).json(error);
+  }
+};
+
 module.exports = {
   updateUser,
   createUser,
   login,
   validateEmail,
+  getUserAll,
 };
 
 // alguien esta editando

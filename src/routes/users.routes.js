@@ -5,6 +5,7 @@ const {
   login,
   validateEmail,
   updateUser,
+  getUserAll,
 } = require("../controllers/users.controlles");
 const {
   createUserValidator,
@@ -18,5 +19,6 @@ router.post("/users", createUserValidator, createUser);
 router.post("/users/login", loginUserValidator, login);
 router.post("/users/email-validate", validateEmail);
 router.put("/user/:id", usernameAvatarValidator, updateUser);
+router.get("/users", getUserAll);
 
 module.exports = router;
