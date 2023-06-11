@@ -10,10 +10,10 @@ const createUser = async (req, res, next) => {
   try {
     // no importa que tan largo sea el nombre de tu funcion o variable
     // siempre y cuando explique lo que hace
-    const { firstname, lastname, username, email, password } = req.body;
+    const { firstname, lastname, username, email, password, avatar } = req.body;
     const hashed = await bcrypt.hash(password, 10);
 
-    await Users.create({ firstname, lastname, username, email, password: hashed });
+    await Users.create({ firstname, lastname, username, email, avatar, password: hashed });
     const user = await Users.findOne({
       where: { email },
     });
@@ -125,8 +125,8 @@ const validateEmail = async (req, res, next) => {
 const updateUser = async (req, res) => {
   try {
       const { id } = req.params;    
-      const { username, avatar } = req.body;
-      await Users.update({username, avatar},{
+      const { username, avatar, validUser } = req.body;
+      await Users.update({username, avatar, validUser},{
           where:{ id }
       });
       res.status(204).send()
