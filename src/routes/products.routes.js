@@ -15,5 +15,5 @@ router.post("/products", authenticate, createProductsValidator, createProduct);
 router.get("/products/zero", getProductsZero);
 router.get("/products/one", getProductsOne);
 router.put("/products/description/:id", authenticate, descriptionValidator, updateDescriptionProduct);
-router.put("/products/availableQty/:id", authenticate, availableQtyValidator, updateAvailableQtyProduct);
+router.put("/products/availableqty/:id", authenticate, availableQtyValidator, updateAvailableQtyProduct);
 module.exports = router;

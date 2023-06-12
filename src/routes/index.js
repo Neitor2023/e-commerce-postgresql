@@ -14,9 +14,6 @@ const apiRoutes = (app) => {
   app.use(carsRoutes);
   app.use(ordersRoutes);
 
-  // TODO una ruta para las categorias
-  // app.use(categoriesRoutes);
-  // app.use(answersRoutes);
   app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDoc));
 };
 

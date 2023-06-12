@@ -48,8 +48,10 @@ const availableQtyValidator = [
   check("availableQty", "Errores en price")
     .isNumeric()
     .withMessage("El precio del producto debe ser un numero"),
+  validateResults,
 ];
 
+const descriptionValidator = [
 check("description", "errores en la descripción")
   .exists()
   .withMessage("No se esta enviando la descripción del producto")
@@ -59,11 +61,11 @@ check("description", "errores en la descripción")
   .withMessage("La descripción debe ser un texto")
   .isLength({ min: 10 })
   .withMessage("La descripción debe tener minimo 10 caracteres"),
-  validateResults,
+validateResults,
 ];
 
-availableQtyValidator
 module.exports = {
   createProductsValidator,
   descriptionValidator,
+  availableQtyValidator,
 };
