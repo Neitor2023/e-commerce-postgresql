@@ -64,5 +64,4 @@ const usernameAvatarValidator = [
     .notEmpty(),
   validateResult,
 ];
-// object.hasOwnProperty('propertyName')
 module.exports = { createUserValidator, loginUserValidator, usernameAvatarValidator };

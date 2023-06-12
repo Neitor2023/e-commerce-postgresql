@@ -1,6 +1,5 @@
 const { Router } = require("express");
 const authenticate = require("../middlewares/auth.middleware");
-// const { createAnswerValidator } = require("../validators/answer.validators");
 const { addOrders, findAllOrders, buyOrders } = require("../controllers/orders.controllers");
 
 const router = Router();

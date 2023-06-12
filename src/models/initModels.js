@@ -16,8 +16,14 @@ const initModels = () => {
   Products.hasMany(ProductInOrders, { foreignKey: "productId" });
 
   // Ref: "Order"."id" < "ProductInOrder"."order_id"
-  ProductInOrders.belongsTo(Orders, { foreignKey: "orderId" });
-  Orders.hasMany(ProductInOrders, { foreignKey: "orderId" });
+  ProductInOrders.belongsTo(Orders, {
+    foreignKey: "orderId",
+    onDelete: "CASCADE",
+  });
+  Orders.hasMany(ProductInOrders, {
+    foreignKey: "orderId",
+    onDelete: "CASCADE",
+  });
 
   // Ref: "products"."id" < "ProductInCart"."product_id"
   ProductInCars.belongsTo(Products, { foreignKey: "productId" });
@@ -32,8 +38,14 @@ const initModels = () => {
   Users.hasMany(Cars, { foreignKey: "userId" });
 
   // Ref: "car"."id" < "ProductInCart"."car_id"
-  ProductInCars.belongsTo(Cars, { foreignKey: "carId" });
-  Cars.hasMany(ProductInCars, { foreignKey: "carId" });
+  ProductInCars.belongsTo(Cars, { 
+    foreignKey: "carId",
+    onDelete: "CASCADE",
+  });
+  Cars.hasMany(ProductInCars, {
+    foreignKey: "carId",
+    onDelete: "CASCADE",
+  });
 };
 
 module.exports = initModels;

@@ -50,23 +50,21 @@ const addOrders = async (req, res, next) => {
 const findAllOrders = async (req, res, next) => {
   try {
     const { userId } = req.params;
-    const orders = await Orders.findOne({
+    const order = await Orders.findOne({
       where: { userId },
-    });
-
-    const productInOrders = await ProductInOrders.findAll({
-      where: {
-        [Op.and]: [{ orderId: orders.id }, { status: false }],
-      },
       include: [
         {
-          model: Products,
-          attributes: ['name', 'description', 'productImage'],
+          model: ProductInOrders,
+          include: [
+            {
+              model: Products,
+              attributes: ['name', 'description', 'productImage'],
+            },
+          ],    
         },
       ],
     });
-
-    res.json(productInOrders);
+    res.json(order);
   } catch (error) {
     next(error);
   }

@@ -3,7 +3,6 @@ const userRoutes = require("./users.routes");
 const productsRoutes = require("./products.routes");
 const carsRoutes = require("./cars.routes");
 const ordersRoutes = require("./orders.routes");
-// const answersRoutes = require("./answers.routes");
 const swaggerUi = require("swagger-ui-express");
 const swaggerDoc = require("../swagger.json");
 

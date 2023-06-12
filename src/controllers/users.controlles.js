@@ -122,7 +122,7 @@ const validateEmail = async (req, res, next) => {
   }
 };
 
-const updateUser = async (req, res) => {
+const updateUser = async (req, res, next) => {
   try {
       const { id } = req.params;    
       const { username, avatar } = req.body;
@@ -155,5 +155,3 @@ module.exports = {
   validateEmail,
   getUserAll,
 };
-
-// alguien esta editando

@@ -1,8 +1,6 @@
 const { check } = require("express-validator");
 const validateResults = require("../utils/validate");
 
-// name,description,price,availableQty,status,productImage
-
 const createProductsValidator = [
   check("name", "Errores en name")
     .exists()
