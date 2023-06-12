@@ -26,11 +26,10 @@ const addCar = async (req, res, next) => {
         }    
       });
       let antTotalPrice = car.totalPrice;
-      await car.update({totalPrice:productincars.price * productincars.quantity + antTotalPrice})
+      await car.update({totalPrice:(productincars.price * productincars.quantity) + antTotalPrice})
     } else {
       await ProductinCars.create({carId:car.id, productId, quantity, price});
-      let antTotalPrice = car.totalPrice;
-      await car.update({totalPrice:quantity * price + antTotalPrice})
+      await car.update({totalPrice:quantity * price})
     }
     // res.status(201).send();
     res.json(car);
