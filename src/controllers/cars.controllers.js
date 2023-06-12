@@ -47,6 +47,12 @@ const findAllCars = async (req, res, next) => {
       include: [
         {
           model: ProductinCars,
+          include: [
+            {
+              model: Products,
+              attributes: ['name', 'description', 'productImage'],
+            },
+          ],    
         },
       ],
 
@@ -56,12 +62,12 @@ const findAllCars = async (req, res, next) => {
     //   where: {
     //     [Op.and]: [{ carId: car.id }, { status: false }],
     //   },
-    //   include: [
-    //     {
-    //       model: Products,
-    //       attributes: ['name', 'description', 'productImage'],
-    //     },
-    //   ],
+      // include: [
+      //   {
+      //     model: Products,
+      //     attributes: ['name', 'description', 'productImage'],
+      //   },
+      // ],
     // });
 
     res.json(car);
