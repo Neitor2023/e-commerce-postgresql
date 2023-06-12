@@ -44,25 +44,56 @@ const findAllCars = async (req, res, next) => {
     const { userId } = req.params;
     const car = await Cars.findOne({
       where: { userId },
-    });
-
-    const productinCars = await ProductinCars.findAll({
-      where: {
-        [Op.and]: [{ carId: car.id }, { status: false }],
-      },
       include: [
         {
-          model: Products,
-          attributes: ['name', 'description', 'productImage'],
+          model: ProductinCars,
         },
       ],
+
     });
 
-    res.json(productinCars);
+    // const productinCars = await ProductinCars.findAll({
+    //   where: {
+    //     [Op.and]: [{ carId: car.id }, { status: false }],
+    //   },
+    //   include: [
+    //     {
+    //       model: Products,
+    //       attributes: ['name', 'description', 'productImage'],
+    //     },
+    //   ],
+    // });
+
+    res.json(car);
   } catch (error) {
     next(error);
   }
 };
+
+// const findAllCars = async (req, res, next) => {
+//   try {
+//     const { userId } = req.params;
+//     const car = await Cars.findOne({
+//       where: { userId },
+//     });
+
+//     const productinCars = await ProductinCars.findAll({
+//       where: {
+//         [Op.and]: [{ carId: car.id }, { status: false }],
+//       },
+//       include: [
+//         {
+//           model: Products,
+//           attributes: ['name', 'description', 'productImage'],
+//         },
+//       ],
+//     });
+
+//     res.json(productinCars);
+//   } catch (error) {
+//     next(error);
+//   }
+// };
 
 module.exports = {
   addCar,
