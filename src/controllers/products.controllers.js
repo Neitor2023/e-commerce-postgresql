@@ -25,6 +25,19 @@ const updateDescriptionProduct = async (req, res, next) => {
   }
 };
 
+const updateAvailableQtyProduct = async (req, res, next) => {
+  try {
+      const { id } = req.params;    
+      const { availableQty } = req.body;
+      await Products.update({availableQty},{
+          where:{ id }
+      });
+      res.status(204).send()
+  } catch (error) {
+    next(error);
+  }
+};
+
 const getProductsZero = async (req, res, next) => {
   try {
     const products = await Products.findAll({
@@ -42,8 +55,27 @@ const getProductsZero = async (req, res, next) => {
   }
 };
 
+const getProductsOne = async (req, res, next) => {
+  try {
+    const products = await Products.findAll({
+      where:{ availableQty: { [Op.lt]: 1 } },
+      include: [
+        {
+          model: Users,
+          attributes: ['username', 'email', 'avatar'],
+        },
+      ],
+    });
+    res.json(products);
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   createProduct,
   updateDescriptionProduct,
+  updateAvailableQtyProduct,
   getProductsZero,
+  getProductsOne,
 };

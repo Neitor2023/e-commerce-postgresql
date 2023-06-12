@@ -1,11 +1,19 @@
 const { Router } = require("express");
 const authenticate = require("../middlewares/auth.middleware");
-const { createProductsValidator, descriptionValidator } = require("../validators/products.validators");
-const { createProduct, updateDescriptionProduct, getProductsZero} = require("../controllers/products.controllers");
+const { createProductsValidator, descriptionValidator, availableQtyValidator } = require("../validators/products.validators");
+const { 
+  createProduct, 
+  updateDescriptionProduct,
+  updateAvailableQtyProduct,
+  getProductsZero, 
+  getProductsOne
+} = require("../controllers/products.controllers");
 
 const router = Router();
 
 router.post("/products", authenticate, createProductsValidator, createProduct);
 router.get("/products/zero", getProductsZero);
-router.put("/products/:id", authenticate, descriptionValidator, updateDescriptionProduct);
+router.get("/products/one", getProductsOne);
+router.put("/products/description/:id", authenticate, descriptionValidator, updateDescriptionProduct);
+router.put("/products/availableQty/:id", authenticate, availableQtyValidator, updateAvailableQtyProduct);
 module.exports = router;

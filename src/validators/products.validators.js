@@ -33,7 +33,7 @@ const createProductsValidator = [
     .withMessage("El precio del producto debe ser un numero"),
   check("availableQty", "Errores en price")
     .isNumeric()
-    .withMessage("El precio del producto debe ser un numero"),    
+    .withMessage("El precio del producto debe ser un numero"),
   check("productImage", "Errores en imagen del producto")
     .exists()
     .withMessage("No se esta enviando imagen del producto")
@@ -41,22 +41,28 @@ const createProductsValidator = [
     .withMessage("La imagen del producto no puede estar vacia")
     .isString()
     .withMessage("La imagen del producto debe ser un String"),
-    validateResults,
-];
-
-const descriptionValidator = [
-  check("description", "errores en la descripción")
-    .exists()
-    .withMessage("No se esta enviando la descripción del producto")
-    .notEmpty()
-    .withMessage("La descripción no puede esta vacia")
-    .isString()
-    .withMessage("La descripción debe ser un texto")
-    .isLength({ min: 10 })
-    .withMessage("La descripción debe tener minimo 10 caracteres"),
   validateResults,
 ];
 
+const availableQtyValidator = [
+  check("availableQty", "Errores en price")
+    .isNumeric()
+    .withMessage("El precio del producto debe ser un numero"),
+];
+
+check("description", "errores en la descripción")
+  .exists()
+  .withMessage("No se esta enviando la descripción del producto")
+  .notEmpty()
+  .withMessage("La descripción no puede esta vacia")
+  .isString()
+  .withMessage("La descripción debe ser un texto")
+  .isLength({ min: 10 })
+  .withMessage("La descripción debe tener minimo 10 caracteres"),
+  validateResults,
+];
+
+availableQtyValidator
 module.exports = {
   createProductsValidator,
   descriptionValidator,
