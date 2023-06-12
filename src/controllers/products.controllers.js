@@ -29,7 +29,11 @@ const updateAvailableQtyProduct = async (req, res, next) => {
   try {
       const { id } = req.params;    
       const { availableQty } = req.body;
-      await Products.update({availableQty},{
+      const constStatus = false;
+      if (availableQty>0) {
+        constStatus = true;
+      }
+      await Products.update({availableQty, status:constStatus},{
           where:{ id }
       });
       res.status(204).send()
