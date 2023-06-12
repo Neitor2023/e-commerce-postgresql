@@ -29,7 +29,7 @@ const updateAvailableQtyProduct = async (req, res, next) => {
   try {
       const { id } = req.params;    
       const { availableQty } = req.body;
-      const constStatus = false;
+      let constStatus = false;
       if (availableQty>0) {
         constStatus = true;
       }
