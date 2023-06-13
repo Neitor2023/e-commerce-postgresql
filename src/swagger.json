@@ -375,6 +375,100 @@
           }
         }
       }
+    },
+
+    "/car/All/{userId}": {
+      "get": {
+        "tags": ["car"],
+        "summary": "Aqui consultar los productos que existen en el carrito",
+        "description": "En este endpoint puede consultar los productos que existen en el carrito de compra",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "description": "El id del usuario"
+          }
+        ],   
+        "responses": {
+          "200": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+
+    "/order/{userId}": {
+      "post": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": ["order"],
+        "summary": "Aqui genera las ordenes de compra",
+        "description": "En este endpoint se genera las ordenes de compra con los productos que existen en el carrito de compra",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "description": "El id del usuario"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+
+    "/order/All/{userId}": {
+      "get": {
+        "tags": ["order"],
+        "summary": "Aqui consultar los productos en el carrito",
+        "description": "En este endpoint puede consultar los productos que existen en el carrito de compra",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "description": "El id del usuario"
+          }
+        ],   
+        "responses": {
+          "200": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+    
+    "/order/buy/{userId}": {
+      "post": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": ["order"],
+        "summary": "Aqui las ordenes son facturadas",
+        "description": "En este endpoint las ordenes son facturadas, se envia un correo con los datos de facturacion y se marca el status en true como indicativo de orden despachada",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "description": "El id del usuario"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok"
+          }
+        }
+      }
     }
   },
   "components": {
