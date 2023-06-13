@@ -47,6 +47,34 @@
         }
       }
     },
+    "/users/email-validate": {
+      "post":{
+        "tags": ["users"],
+        "summary": "Endpoint para validar el email",
+        "description": "Al crear el usuario se ejecutara de forma automatica el envio de un correo, donde tendrás un boton para validar el correo, al hacel clip en este boton se abrira una nueva pagina web y en la URL tendras el token que debes copiar y pegar en este endpoint, consumido el endpoint ya estara validado el correo",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "token":{
+                    "type": "string",
+                    "example": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImZ1bGFubyIsImVtYWlsIjoiZnVsYW5vQGdtYWlsLmNvbSIsImlhdCI6MTY4NjUzOTcwMCwiZXhwIjoxNjg2NTgyOTAwfQ.cgEEy6dpBq9q4lSzyhv9m9fdrgW2xAFAqA23stRHw3GkRuiOkSdc5eJrDU8nBYxjiDpYBa2wLO8dA8PHDw_FvQ"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "ok"
+          }
+        }
+      }
+    },
     "/users/login": {
       "post": {
         "tags": ["users"],
@@ -83,6 +111,222 @@
         }
       }
     },
+    "/user/{id}": {
+      "put": {
+        "tags": ["users"],
+        "summary": "Endpoint para modificar username y avatar",
+        "description": "Aqui puedes modificar username y avatar de algun usuario, solo sustituye el 1 por el id del usuario a modificar y listo",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "El id del usuario"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username":{
+                    "type": "string",
+                    "example": "popeye"
+                  },
+                  "avatar": {
+                    "type": "string",
+                    "example": "data:image/png"
+                  }
+                }
+              }
+            }
+          }
+        },        
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "tags": ["users"],
+        "summary": "Aqui obtienes todos los usuarios",
+        "description": "Solo ejecutas el end point y obtienes todos los usuarios",
+        "responses": {
+          "200": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+
+    "/products": {
+      "post": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Crear un producto",
+        "tags": ["products"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "userId": {
+                    "type": "integer",
+                    "format": "int32",
+                    "example": 6
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "Laptop Toshiba Satelite"
+                  },
+                  "description": {
+                    "type": "string",
+                    "example": "Laptop Toshiba Satelite Version Lujo"
+                  },
+                  "price": {
+                    "type": "real",
+                    "example": "1000"
+                  },
+                  "availableQty": {
+                    "type": "integer",
+                    "example": "7"
+                  },
+                  "status": {
+                    "type": "boolean",
+                    "example": "false"
+                  },
+                  "productImage": {
+                    "type": "string",
+                    "example": "www.imagenLaptopToshibaSatelite.com"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+
+    "/products/zero": {
+      "get": {
+        "tags": ["products"],
+        "summary": "Productos con existencia mayor a cero",
+        "description": "Aqui puedes consultar los productos con una existencia mayor a cero",
+        "responses": {
+          "200": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+
+    "/products/one": {
+      "get": {
+        "tags": ["products"],
+        "summary": "Productos con existencia menor a uno",
+        "description": "Aqui puedes consultar los productos con una existencia menor a uno",
+        "responses": {
+          "200": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+
+    "/products/description/{id}": {
+      "put": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Modifica la description de un producto",
+        "tags": ["products"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "El id de producto"
+          }
+        ],        
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "description": {
+                    "type": "string",
+                    "example": "Fotocopiadora Samsung 1500"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+    
+    "/products/availableqty/{id}": {
+      "put": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Modifica la existencia de un producto",
+        "tags": ["products"],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "El id de producto"
+          }
+        ],        
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "availableQty": {
+                    "type": "integer",
+                    "example": "7"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
+
     "/posts/{categoryId}": {
       "get": {
         "tags": ["posts"],

@@ -126,10 +126,10 @@ const updateUser = async (req, res, next) => {
   try {
       const { id } = req.params;    
       const { username, avatar } = req.body;
-      await Users.update({username, avatar},{
+      await Users.update({username, avatar },{
           where:{ id }
       });
-      res.status(204).send()
+      res.status(200).send()
   } catch (error) {
     next(error);
   }
