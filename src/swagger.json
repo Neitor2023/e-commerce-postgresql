@@ -1,14 +1,14 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "Forum API",
-    "description": "Una API para un foro donde podrás crear temas, responder publicaciones, crear tu usuario, identicarte...",
+    "title": "Ecomerce PEPEGANGA API",
+    "description": "Una API para un E-commerce de productos, donde los Usuarios publican sus ventas de productos, los interesados en comprar tienen su carrito de compra, al ejecutar la compra se vacia el carrito y se actualiza el stop de existencia de los productos",
     "version": "1.0.0"
   },
   "paths": {
     "/users": {
       "post": {
-        "summary": "End point para regitrar a un usuario en el foro",
+        "summary": "Endpoint para regitrar a un usuario",
         "description": "Para que puedas crar un nuevo usuario, es necesario que proporcionar un email válido, una contraseña de al menos 8 caracteres y un nombre de usuario. Estos campos son obligatorios de lo contrario no podrás tener un nuevo usuario",
         "tags": ["users"],
         "requestBody": {
@@ -50,7 +50,7 @@
     "/users/login": {
       "post": {
         "tags": ["users"],
-        "summary": "Endpoint para ingrear / loggear a un usuario en la aplicación",
+        "summary": "Endpoint para ingrear / loggear a un usuario",
         "description": "Para poder loggear a un usuario en la aplicación necesitas enviar, un email y contraseña validos",
         "requestBody": {
           "required": true,
@@ -59,9 +59,13 @@
               "schema": {
                 "type": "object",
                 "properties": {
+                  "username":{
+                    "type": "string",
+                    "example": "popeye"
+                  },
                   "email": {
                     "type": "string",
-                    "example": "perenganito@gmail.com"
+                    "example": "popeye@gmail.com"
                   },
                   "password": {
                     "type": "string",
@@ -82,7 +86,7 @@
     "/posts/{categoryId}": {
       "get": {
         "tags": ["posts"],
-        "summary": "Con este endpoint podrás obtener todas las publicaciones que pertenecen a una categoria",
+        "summary": "Aqui obtienes las publicaciones de categorias",
         "description": "En la url es necesario colocar el id de la categoria de la cual quieres obtener las publicaciones",
         "parameters": [
           {
@@ -150,17 +154,29 @@
       "register": {
         "type": "object",
         "properties": {
-          "username": {
+          "firstname":{
             "type": "string",
-            "example": "Iannacus"
+            "example": "Popeye"
+          },
+          "lastname":{
+            "type": "string",
+            "example": "El Marino"
+          },
+          "username":{
+            "type": "string",
+            "example": "popeye"
           },
           "email": {
             "type": "string",
-            "example": "perenganito@gmail.com"
+            "example": "popeye@gmail.com"
           },
           "password": {
             "type": "string",
             "example": "12345678"
+          },
+          "avatar": {
+            "type": "string",
+            "example": "data:image/png"
           }
         }
       }
