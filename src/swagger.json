@@ -326,65 +326,49 @@
         }
       }
     },
-
-    "/posts/{categoryId}": {
-      "get": {
-        "tags": ["posts"],
-        "summary": "Aqui obtienes las publicaciones de categorias",
-        "description": "En la url es necesario colocar el id de la categoria de la cual quieres obtener las publicaciones",
-        "parameters": [
-          {
-            "name": "categoryId",
-            "in": "path",
-            "required": true,
-            "description": "El id de la categoria"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Ok"
-          }
-        }
-      }
-    },
-    "/posts": {
+    
+    "/car/{userId}": {
       "post": {
         "security": [
           {
             "bearerAuth": []
           }
         ],
-        "summary": "Crear una nueva publicación",
-        "tags": ["posts"],
+        "tags": ["car"],
+        "summary": "Aqui agregan los productos al carrito de compra",
+        "description": "En este endpoint se agregan los productos al carrito de compra",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "description": "El id del usuario"
+          }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
                 "type": "object",
                 "properties": {
-                  "title": {
-                    "type": "string",
-                    "example": "ñlaskdfgñalksjfñdskj"
-                  },
-                  "description": {
-                    "type": "string",
-                    "example": "ñlaskdfgñalksjfñdskj"
-                  },
-                  "userId": {
+                  "productId": {
                     "type": "integer",
                     "format": "int32",
-                    "example": 6
+                    "example": 7
                   },
-                  "categoryId": {
+                  "quantity": {
                     "type": "integer",
-                    "format": "int32",
-                    "example": 1
+                    "example": "7"
+                  },
+                  "price": {
+                    "type": "real",
+                    "example": "1000"
                   }
                 }
               }
             }
           }
-        },
+        },        
         "responses": {
           "200": {
             "description": "Ok"
