@@ -46,26 +46,21 @@
       </callout>
 
       <h4>Order Details</h4>
-
       <table>
-        <tr><th>Item</th><th>#</th><th>Price</th></tr>
-        <tr><td><%= product0 %></td><td><%= quantity0 %></td><td>$<%= price0 %></td></tr>
-        <tr><td><%= product1 %></td><td><%= quantity1 %></td><td>$<%= price1 %></td></tr>
-        <tr><td><%= product2 %></td><td><%= quantity2 %></td><td>$<%= price2 %></td></tr>
-        <tr><td><%= product3 %></td><td><%= quantity3 %></td><td>$<%= price3 %></td></tr>
-        <tr><td><%= product4 %></td><td><%= quantity4 %></td><td>$<%= price4 %></td></tr>
-        <tr><td><%= product5 %></td><td><%= quantity5 %></td><td>$<%= price5 %></td></tr>
-        <tr><td><%= product6 %></td><td><%= quantity6 %></td><td>$<%= price6 %></td></tr>
-        <tr><td><%= product7 %></td><td><%= quantity7 %></td><td>$<%= price7 %></td></tr>
-        <tr><td><%= product8 %></td><td><%= quantity8 %></td><td>$<%= price8 %></td></tr>
-        <tr><td><%= product9 %></td><td><%= quantity9 %></td><td>$<%= price9 %></td></tr>
+        <tr><th><hr>Quantity<hr/></th><th><hr>Name<hr/></th><th><hr>Price<hr/></th><th><hr>SubTot<hr/></th></tr>
+      <% factu.product.forEach(producto => { %>
         <tr>
-          <td colspan="2"><b>Subtotal:</b></td>
-          <td>$<%= totalOrderPrice %></td>
+          <td><%= producto.quantity %></td>
+          <td><%= producto.name %></td>
+          <td>$<%= producto.price %></td>
+          <td>$<%= producto.subtot %></td>
         </tr>
+        <% }); %>
+        <tr>
+          <td colspan="3"><b><hr>Total:<hr/></b></td>
+          <td><hr>$<%= factu.total %><hr/></td>
+        </tr>        
       </table>
-
-      <hr/>
 
       <h4>What's Next?</h4>
 

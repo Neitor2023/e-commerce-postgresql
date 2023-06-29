@@ -5,9 +5,8 @@ const authenticate = (req, res, next) => {
   try {
     // recuperar el token
     // const token = req.headers["access-token"];
-    // changer authentication with bearer token
+    // changer authentication with bearer token    
     const token = req.headers.authorization.split(' ')[1];    
-
     if (!token) {
       console.log("error en validacion");
       // ! esto es un error --> next (error)
